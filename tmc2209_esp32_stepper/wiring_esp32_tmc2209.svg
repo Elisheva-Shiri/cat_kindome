@@ -1,112 +1,266 @@
-﻿<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900">
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="960" viewBox="0 0 1400 960">
   <defs>
     <style>
-      .title{font:700 34px Arial, sans-serif;fill:#17202a}.label{font:600 20px Arial, sans-serif;fill:#17202a}.small{font:16px Arial, sans-serif;fill:#17202a}.tiny{font:14px Arial, sans-serif;fill:#17202a}.pin{font:700 16px Arial, sans-serif;fill:#fff}.box{fill:#f8fbff;stroke:#263238;stroke-width:3;rx:18}.driver{fill:#fff7e6;stroke:#263238;stroke-width:3;rx:18}.motor{fill:#f4fff4;stroke:#263238;stroke-width:3;rx:18}.psu{fill:#fff0f0;stroke:#263238;stroke-width:3;rx:18}.wire-red{stroke:#d32f2f;stroke-width:6;fill:none}.wire-black{stroke:#111;stroke-width:6;fill:none}.wire-blue{stroke:#1976d2;stroke-width:5;fill:none}.wire-green{stroke:#2e7d32;stroke-width:5;fill:none}.wire-purple{stroke:#7b1fa2;stroke-width:5;fill:none}.wire-orange{stroke:#f57c00;stroke-width:5;fill:none}.wire-gray{stroke:#607d8b;stroke-width:5;fill:none;stroke-dasharray:10 8}.note{fill:#fffde7;stroke:#f9a825;stroke-width:2;rx:12}.pinbox{fill:#455a64;stroke:#263238;stroke-width:1;rx:5}.cap{fill:#e1f5fe;stroke:#0277bd;stroke-width:3;rx:8}
+      .title { font: 700 30px Arial, sans-serif; fill: #0f172a; }
+      .subtitle { font: 500 15px Arial, sans-serif; fill: #475569; }
+      .box-title { font: 700 18px Arial, sans-serif; fill: #0f172a; }
+      .box-sub { font: 500 13px Arial, sans-serif; fill: #64748b; }
+      .pin-label { font: 700 11px Arial, sans-serif; fill: #ffffff; }
+      .pin-num { font: 700 11px Arial, sans-serif; fill: #facc15; }
+      .desc-text { font: 500 13px Arial, sans-serif; fill: #1e293b; }
+      .wire-tag { font: 700 11px Arial, sans-serif; fill: #0f172a; }
+      .note-title { font: 700 14px Arial, sans-serif; fill: #991b1b; }
+      .note-body { font: 400 12px Arial, sans-serif; fill: #334155; }
+      
+      .box-esp { fill: #f8fafc; stroke: #0284c7; stroke-width: 2.5; rx: 12; }
+      .box-driver { fill: #fffbeb; stroke: #d97706; stroke-width: 2.5; rx: 12; }
+      .box-psu { fill: #fef2f2; stroke: #dc2626; stroke-width: 2.5; rx: 12; }
+      .box-motor { fill: #f0fdf4; stroke: #16a34a; stroke-width: 2.5; rx: 12; }
+      .box-cap { fill: #ecfeff; stroke: #0891b2; stroke-width: 2; rx: 8; }
+      .box-note { fill: #f8fafc; stroke: #cbd5e1; stroke-width: 1.5; rx: 10; }
+      .box-alert { fill: #fff1f2; stroke: #f43f5e; stroke-width: 1.5; rx: 10; }
+      .box-chip { fill: #1e293b; stroke: #475569; stroke-width: 1.5; rx: 6; }
+      
+      .pinbox { fill: #475569; stroke: #334155; stroke-width: 1; rx: 4; }
+      .pinbox-pwr { fill: #b91c1c; stroke: #991b1b; stroke-width: 1; rx: 4; }
+      .pinbox-gnd { fill: #0f172a; stroke: #020617; stroke-width: 1; rx: 4; }
+      .pinbox-sig { fill: #1d4ed8; stroke: #1e40af; stroke-width: 1; rx: 4; }
+      .pinbox-motor { fill: #15803d; stroke: #166534; stroke-width: 1; rx: 4; }
+      .pinbox-diag { fill: #7e22ce; stroke: #6b21a8; stroke-width: 1; rx: 4; }
+      
+      .wire-red { stroke: #dc2626; stroke-width: 4; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+      .wire-black { stroke: #0f172a; stroke-width: 4; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+      .wire-purple { stroke: #9333ea; stroke-width: 3.5; fill: none; stroke-linecap: round; }
+      .wire-green { stroke: #16a34a; stroke-width: 3.5; fill: none; stroke-linecap: round; }
+      .wire-blue { stroke: #2563eb; stroke-width: 3.5; fill: none; stroke-linecap: round; }
+      .wire-coil-a { stroke: #ea580c; stroke-width: 3.5; fill: none; stroke-linecap: round; }
+      .wire-coil-b { stroke: #0284c7; stroke-width: 3.5; fill: none; stroke-linecap: round; }
+      .wire-jumper { stroke: #d97706; stroke-width: 2.5; fill: none; stroke-dasharray: 6 4; }
+      .wire-gnd-link { stroke: #0f172a; stroke-width: 3; fill: none; stroke-dasharray: 6 4; }
     </style>
-    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#263238"/></marker>
   </defs>
 
-  <text x="40" y="55" class="title">ESP32 + MKS TMC2209 V2.0 wiring for one 4-wire stepper motor</text>
-  <text x="40" y="88" class="small">STEP/DIR mode, slow 20° forward + 20° back, 10 seconds total loop</text>
+  <!-- Title & Subtitle -->
+  <text x="50" y="45" class="title">ESP32 + MKS TMC2209 V2.0 Wiring Diagram</text>
+  <text x="50" y="72" class="subtitle">Corrected StepStick DIP-16 Layout • Standalone STEP/DIR mode (16 microsteps) • 4-wire Bipolar Stepper</text>
 
-  <!-- ESP32 -->
-  <rect x="80" y="170" width="300" height="430" class="box"/>
-  <text x="140" y="215" class="label">ESP32 Dev Board</text>
-  <rect x="310" y="250" width="50" height="30" class="pinbox"/><text x="318" y="271" class="pin">3V3</text>
-  <rect x="310" y="300" width="50" height="30" class="pinbox"/><text x="319" y="321" class="pin">GND</text>
-  <rect x="310" y="365" width="50" height="30" class="pinbox"/><text x="320" y="386" class="pin">25</text>
-  <rect x="310" y="415" width="50" height="30" class="pinbox"/><text x="320" y="436" class="pin">26</text>
-  <rect x="310" y="465" width="50" height="30" class="pinbox"/><text x="320" y="486" class="pin">27</text>
-  <text x="120" y="272" class="small">3.3 V logic</text>
-  <text x="120" y="322" class="small">common ground</text>
-  <text x="120" y="387" class="small">EN enable</text>
-  <text x="120" y="437" class="small">DIR direction</text>
-  <text x="120" y="487" class="small">STEP pulses</text>
+  <!-- ==================== 1. ESP32 DEV BOARD ==================== -->
+  <rect x="50" y="105" width="280" height="495" class="box-esp"/>
+  <text x="75" y="142" class="box-title">ESP32 Dev Board</text>
+  <text x="75" y="164" class="box-sub">3.3V Logic Controller</text>
 
-  <!-- Driver -->
-  <rect x="560" y="145" width="360" height="510" class="driver"/>
-  <text x="610" y="190" class="label">MKS TMC2209 V2.0</text>
-  <text x="640" y="220" class="small">StepStick driver module</text>
+  <!-- ESP32 Pin Items -->
+  <text x="70" y="215" class="desc-text">3.3V Logic Out</text>
+  <rect x="235" y="198" width="75" height="26" class="pinbox-pwr"/>
+  <text x="257" y="215" class="pin-label">3V3</text>
 
-  <!-- Driver left pins control -->
-  <rect x="560" y="250" width="70" height="30" class="pinbox"/><text x="579" y="271" class="pin">VIO</text>
-  <rect x="560" y="300" width="70" height="30" class="pinbox"/><text x="578" y="321" class="pin">GND</text>
-  <rect x="560" y="365" width="70" height="30" class="pinbox"/><text x="583" y="386" class="pin">EN</text>
-  <rect x="560" y="415" width="70" height="30" class="pinbox"/><text x="581" y="436" class="pin">DIR</text>
-  <rect x="560" y="465" width="70" height="30" class="pinbox"/><text x="573" y="486" class="pin">STEP</text>
-  <rect x="560" y="525" width="70" height="30" class="pinbox"/><text x="578" y="546" class="pin">MS1</text>
-  <rect x="560" y="570" width="70" height="30" class="pinbox"/><text x="578" y="591" class="pin">MS2</text>
+  <text x="70" y="265" class="desc-text">Ground</text>
+  <rect x="235" y="248" width="75" height="26" class="pinbox-gnd"/>
+  <text x="257" y="265" class="pin-label">GND</text>
 
-  <!-- Driver right pins power/motor -->
-  <rect x="850" y="250" width="70" height="30" class="pinbox"/><text x="875" y="271" class="pin">VM</text>
-  <rect x="850" y="300" width="70" height="30" class="pinbox"/><text x="867" y="321" class="pin">GND</text>
-  <rect x="850" y="395" width="70" height="30" class="pinbox"/><text x="865" y="416" class="pin">M1A</text>
-  <rect x="850" y="440" width="70" height="30" class="pinbox"/><text x="865" y="461" class="pin">M1B</text>
-  <rect x="850" y="500" width="70" height="30" class="pinbox"/><text x="865" y="521" class="pin">M2A</text>
-  <rect x="850" y="545" width="70" height="30" class="pinbox"/><text x="865" y="566" class="pin">M2B</text>
+  <text x="70" y="340" class="desc-text">EN (active LOW)</text>
+  <rect x="235" y="323" width="75" height="26" class="pinbox-sig"/>
+  <text x="248" y="340" class="pin-label">GPIO 25</text>
 
-  <text x="650" y="548" class="tiny">Tie MS1/MS2 to 3V3 for 16 microsteps</text>
-  <text x="650" y="590" class="tiny">or set jumpers and update MICROSTEPS in code</text>
+  <text x="70" y="415" class="desc-text">DIR (direction)</text>
+  <rect x="235" y="398" width="75" height="26" class="pinbox-sig"/>
+  <text x="248" y="415" class="pin-label">GPIO 26</text>
 
-  <!-- PSU -->
-  <rect x="1030" y="160" width="270" height="190" class="psu"/>
-  <text x="1090" y="205" class="label">12 V PSU</text>
-  <text x="1085" y="235" class="small">or 24 V if motor/driver allow</text>
-  <rect x="1055" y="270" width="70" height="34" class="pinbox"/><text x="1073" y="293" class="pin">+V</text>
-  <rect x="1055" y="315" width="70" height="34" class="pinbox"/><text x="1070" y="338" class="pin">-V</text>
+  <text x="70" y="490" class="desc-text">STEP (pulses)</text>
+  <rect x="235" y="473" width="75" height="26" class="pinbox-sig"/>
+  <text x="248" y="490" class="pin-label">GPIO 27</text>
+
+  <!-- ==================== 2. MKS TMC2209 V2.0 DRIVER ==================== -->
+  <rect x="470" y="105" width="490" height="525" class="box-driver"/>
+  <text x="715" y="138" class="box-title" text-anchor="middle">MKS TMC2209 V2.0</text>
+  <text x="715" y="158" class="box-sub" text-anchor="middle">Standard StepStick DIP-16 Layout</text>
+
+  <!-- TMC2209 IC & Trimpot center representation -->
+  <rect x="675" y="275" width="80" height="75" class="box-chip"/>
+  <text x="715" y="308" class="pin-label" text-anchor="middle" font-size="10">TMC2209</text>
+  <text x="715" y="323" class="box-sub" text-anchor="middle" fill="#94a3b8" font-size="9">Trinamic IC</text>
+  <circle cx="715" cy="225" r="14" fill="#cbd5e1" stroke="#475569" stroke-width="2"/>
+  <line x1="707" y1="225" x2="723" y2="225" stroke="#1e293b" stroke-width="3"/>
+  <text x="715" y="250" class="box-sub" text-anchor="middle" font-size="10">VREF Trim</text>
+
+  <!-- Driver Left Header (Pins 1-8: Control JP1) -->
+  <rect x="470" y="185" width="115" height="26" class="pinbox-sig"/>
+  <text x="478" y="202" class="pin-num">1</text><text x="496" y="202" class="pin-label">EN / ENN</text>
+
+  <rect x="470" y="230" width="115" height="26" class="pinbox"/>
+  <text x="478" y="247" class="pin-num">2</text><text x="496" y="247" class="pin-label">MS1</text>
+
+  <rect x="470" y="275" width="115" height="26" class="pinbox"/>
+  <text x="478" y="292" class="pin-num">3</text><text x="496" y="292" class="pin-label">MS2</text>
+
+  <rect x="470" y="320" width="115" height="26" class="pinbox"/>
+  <text x="478" y="337" class="pin-num">4</text><text x="496" y="337" class="pin-label">PDN_UART</text>
+
+  <rect x="470" y="365" width="115" height="26" class="pinbox"/>
+  <text x="478" y="382" class="pin-num">5</text><text x="496" y="382" class="pin-label">CLK / NC</text>
+
+  <rect x="470" y="410" width="115" height="26" class="pinbox"/>
+  <text x="478" y="427" class="pin-num">6</text><text x="496" y="427" class="pin-label">SPREAD/NC</text>
+
+  <rect x="470" y="455" width="115" height="26" class="pinbox-sig"/>
+  <text x="478" y="472" class="pin-num">7</text><text x="496" y="472" class="pin-label">STEP</text>
+
+  <rect x="470" y="500" width="115" height="26" class="pinbox-sig"/>
+  <text x="478" y="517" class="pin-num">8</text><text x="496" y="517" class="pin-label">DIR</text>
+
+  <!-- Driver Right Header (Pins 16 down to 9: Power/Motor JP2) -->
+  <rect x="825" y="185" width="135" height="26" class="pinbox-pwr"/>
+  <text x="833" y="202" class="pin-num">16</text><text x="855" y="202" class="pin-label">VM (4.75-28V)</text>
+
+  <rect x="825" y="230" width="135" height="26" class="pinbox-gnd"/>
+  <text x="833" y="247" class="pin-num">15</text><text x="855" y="247" class="pin-label">GND (Motor)</text>
+
+  <rect x="825" y="275" width="135" height="26" class="pinbox-motor"/>
+  <text x="833" y="292" class="pin-num">14</text><text x="855" y="292" class="pin-label">2B (Coil B)</text>
+
+  <rect x="825" y="320" width="135" height="26" class="pinbox-motor"/>
+  <text x="833" y="337" class="pin-num">13</text><text x="855" y="337" class="pin-label">2A (Coil B)</text>
+
+  <rect x="825" y="365" width="135" height="26" class="pinbox-motor"/>
+  <text x="833" y="382" class="pin-num">12</text><text x="855" y="382" class="pin-label">1A (Coil A)</text>
+
+  <rect x="825" y="410" width="135" height="26" class="pinbox-motor"/>
+  <text x="833" y="427" class="pin-num">11</text><text x="855" y="427" class="pin-label">1B (Coil A)</text>
+
+  <rect x="825" y="455" width="135" height="26" class="pinbox-pwr"/>
+  <text x="833" y="472" class="pin-num">10</text><text x="855" y="472" class="pin-label">VIO (3.3V Logic)</text>
+
+  <rect x="825" y="500" width="135" height="26" class="pinbox-gnd"/>
+  <text x="833" y="517" class="pin-num">9</text><text x="855" y="517" class="pin-label">GND (Logic)</text>
+
+  <!-- Driver Bottom Edge Pins (V2.0 Dedicated Features) -->
+  <rect x="590" y="580" width="65" height="22" class="pinbox"/>
+  <text x="605" y="595" class="pin-label">VREF</text>
+  <rect x="665" y="580" width="65" height="22" class="pinbox"/>
+  <text x="677" y="595" class="pin-label">INDEX</text>
+  <rect x="740" y="580" width="100" height="22" class="pinbox-diag"/>
+  <text x="748" y="595" class="pin-label">DIAG (Homing)</text>
+  <text x="715" y="618" class="box-sub" text-anchor="middle" font-size="11">V2.0 Bottom Pins (DIAG = Sensorless Homing output)</text>
+
+  <!-- ==================== 3. MOTOR POWER SUPPLY ==================== -->
+  <rect x="1090" y="105" width="260" height="170" class="box-psu"/>
+  <text x="1115" y="142" class="box-title">Motor Power Supply</text>
+  <text x="1115" y="164" class="box-sub">12 V DC (or up to 28 V DC)</text>
+  <rect x="1110" y="185" width="70" height="26" class="pinbox-pwr"/>
+  <text x="1128" y="202" class="pin-label">+12V</text>
+  <rect x="1110" y="230" width="70" height="26" class="pinbox-gnd"/>
+  <text x="1130" y="247" class="pin-label">-V</text>
 
   <!-- Capacitor -->
-  <rect x="975" y="375" width="210" height="95" class="cap"/>
-  <text x="995" y="408" class="label">≥100 µF</text>
-  <text x="995" y="435" class="small">electrolytic capacitor</text>
-  <text x="995" y="459" class="tiny">across VM and GND near driver</text>
+  <rect x="1000" y="185" width="55" height="71" class="box-cap"/>
+  <text x="1027" y="215" class="box-title" text-anchor="middle" font-size="13">≥100µF</text>
+  <text x="1027" y="233" class="box-sub" text-anchor="middle" font-size="9">Electrolytic</text>
+  <text x="1027" y="247" class="box-sub" text-anchor="middle" font-size="9">Buffer</text>
 
-  <!-- Motor -->
-  <rect x="1030" y="520" width="290" height="250" class="motor"/>
-  <circle cx="1175" cy="640" r="62" fill="#e8f5e9" stroke="#2e7d32" stroke-width="5"/>
-  <circle cx="1175" cy="640" r="22" fill="#c8e6c9" stroke="#2e7d32" stroke-width="4"/>
-  <text x="1090" y="560" class="label">4-wire Stepper</text>
-  <text x="1060" y="732" class="small">Find coil pairs with a multimeter.</text>
-  <text x="1060" y="756" class="small">One pair = M1A/M1B, other = M2A/M2B.</text>
+  <!-- ==================== 4. STEPPER MOTOR ==================== -->
+  <rect x="1090" y="310" width="260" height="295" class="box-motor"/>
+  <text x="1115" y="345" class="box-title">4-Wire Stepper</text>
+  <text x="1115" y="367" class="box-sub">NEMA 17 Bipolar Motor</text>
 
-  <!-- Wires ESP to Driver -->
-  <path d="M360 265 C430 265, 490 265, 560 265" class="wire-red"/><text x="410" y="250" class="tiny">ESP32 3V3 → VIO</text>
-  <path d="M360 315 C430 315, 490 315, 560 315" class="wire-black"/><text x="410" y="300" class="tiny">GND → GND</text>
-  <path d="M360 380 C430 380, 490 380, 560 380" class="wire-purple"/><text x="410" y="365" class="tiny">GPIO25 → EN</text>
-  <path d="M360 430 C430 430, 490 430, 560 430" class="wire-green"/><text x="410" y="415" class="tiny">GPIO26 → DIR</text>
-  <path d="M360 480 C430 480, 490 480, 560 480" class="wire-blue"/><text x="410" y="465" class="tiny">GPIO27 → STEP</text>
+  <circle cx="1220" cy="460" r="52" fill="#dcfce7" stroke="#16a34a" stroke-width="3"/>
+  <circle cx="1220" cy="460" r="20" fill="#bbf7d0" stroke="#16a34a" stroke-width="2"/>
+  <circle cx="1220" cy="460" r="6" fill="#16a34a"/>
 
-  <!-- MS jumpers -->
-  <path d="M630 540 C690 540, 710 265, 630 265" class="wire-gray"/>
-  <path d="M630 585 C720 585, 745 265, 630 265" class="wire-gray"/>
+  <rect x="1110" y="405" width="65" height="20" class="pinbox-motor"/><text x="1116" y="419" class="pin-label" font-size="10">Coil B (2B)</text>
+  <rect x="1110" y="435" width="65" height="20" class="pinbox-motor"/><text x="1116" y="449" class="pin-label" font-size="10">Coil B (2A)</text>
+  <rect x="1110" y="485" width="65" height="20" class="pinbox-motor"/><text x="1116" y="499" class="pin-label" font-size="10">Coil A (1A)</text>
+  <rect x="1110" y="515" width="65" height="20" class="pinbox-motor"/><text x="1116" y="529" class="pin-label" font-size="10">Coil A (1B)</text>
+  <text x="1220" y="540" class="box-sub" text-anchor="middle" font-size="10">Pair 1: 1A/1B • Pair 2: 2A/2B</text>
 
-  <!-- PSU to Driver -->
-  <path d="M1055 287 C1010 287, 970 265, 920 265" class="wire-red"/><text x="940" y="246" class="tiny">+12 V → VM</text>
-  <path d="M1055 332 C1000 332, 970 315, 920 315" class="wire-black"/><text x="940" y="350" class="tiny">PSU -V → GND</text>
+  <!-- ==================== WIRING PATHS ==================== -->
+  <!-- 1. EN: GPIO25 -> TMC2209 Pin 1 EN -->
+  <path d="M 310 336 C 390 336, 410 198, 470 198" class="wire-purple"/>
+  <text x="350" y="275" class="wire-tag" fill="#9333ea">EN (GPIO25)</text>
 
-  <!-- common ground connection from driver to ESP32 already; show note -->
-  <path d="M850 315 C760 735, 360 735, 310 315" class="wire-black" opacity="0.35"/>
-  <text x="430" y="760" class="small">Important: ESP32 GND, driver GND, and PSU -V must be common.</text>
+  <!-- 2. DIR: GPIO26 -> TMC2209 Pin 8 DIR -->
+  <path d="M 310 411 C 390 411, 410 513, 470 513" class="wire-green"/>
+  <text x="350" y="455" class="wire-tag" fill="#16a34a">DIR (GPIO26)</text>
 
-  <!-- capacitor connection -->
-  <path d="M975 398 C935 360, 930 275, 920 265" class="wire-red"/>
-  <path d="M975 450 C940 430, 930 330, 920 315" class="wire-black"/>
+  <!-- 3. STEP: GPIO27 -> TMC2209 Pin 7 STEP -->
+  <path d="M 310 486 C 390 486, 420 468, 470 468" class="wire-blue"/>
+  <text x="350" y="495" class="wire-tag" fill="#2563eb">STEP (GPIO27)</text>
 
-  <!-- Motor wires -->
-  <path d="M920 410 C980 410, 1005 585, 1060 600" class="wire-orange"/><text x="935" y="398" class="tiny">coil A</text>
-  <path d="M920 455 C975 455, 1005 610, 1060 625" class="wire-orange"/>
-  <path d="M920 515 C980 515, 1005 665, 1060 680" class="wire-blue"/><text x="935" y="505" class="tiny">coil B</text>
-  <path d="M920 560 C975 560, 1005 690, 1060 705" class="wire-blue"/>
+  <!-- 4. Logic Power (ESP32 3V3 -> Driver Pin 10 VIO) -->
+  <!-- Clean orthogonal bus along bottom -->
+  <path d="M 310 211 L 430 211 L 430 85 L 800 85 L 800 468 L 825 468" class="wire-red"/>
+  <text x="540" y="78" class="wire-tag" fill="#dc2626">3.3V Logic Supply (ESP32 3V3 → TMC2209 Pin 10 VIO)</text>
 
-  <!-- Notes -->
-  <rect x="80" y="680" width="430" height="145" class="note"/>
-  <text x="105" y="715" class="label">Before powering</text>
-  <text x="105" y="747" class="small">1. Set driver current/Vref for your motor.</text>
-  <text x="105" y="775" class="small">2. Check coil pairs; wrong pairs cause vibration.</text>
-  <text x="105" y="803" class="small">3. Never unplug motor while VM is powered.</text>
+  <!-- 5. Microstep Jumpers (MS1 Pin 2 & MS2 Pin 3 tied to 3.3V) -->
+  <path d="M 470 243 L 430 243" class="wire-jumper"/>
+  <circle cx="430" cy="243" r="3.5" fill="#d97706"/>
+  <path d="M 470 288 L 430 288" class="wire-jumper"/>
+  <circle cx="430" cy="288" r="3.5" fill="#d97706"/>
+  <line x1="430" y1="211" x2="430" y2="288" stroke="#d97706" stroke-width="2.5" stroke-dasharray="6 4"/>
+  <text x="345" y="240" class="wire-tag" fill="#d97706" font-size="10">MS1/MS2 = 3.3V (16 µsteps)</text>
 
-  <rect x="560" y="700" width="360" height="125" class="note"/>
-  <text x="585" y="735" class="label">Code values</text>
-  <text x="585" y="765" class="small">GPIO25 EN, GPIO26 DIR, GPIO27 STEP</text>
-  <text x="585" y="793" class="small">200 full-steps/rev, 16 microsteps</text>
+  <!-- 6. Common Ground (ESP32 GND -> Driver Pin 9 GND Logic & PSU -V) -->
+  <path d="M 310 261 L 410 261 L 410 560 L 800 560 L 800 513 L 825 513" class="wire-black"/>
+  <path d="M 800 560 L 1027 560 L 1027 243" class="wire-gnd-link"/>
+  <text x="440" y="552" class="wire-tag" fill="#0f172a">Common Ground Bus (ESP32 GND ↔ Driver Pin 9 GND ↔ PSU -V)</text>
+
+  <!-- 7. PSU +12V -> Driver Pin 16 VM & Cap (+) -->
+  <path d="M 1110 198 L 960 198" class="wire-red"/>
+  <circle cx="1027" cy="198" r="4" fill="#dc2626"/>
+  <line x1="1027" y1="198" x2="1027" y2="185" stroke="#dc2626" stroke-width="2.5"/>
+  <text x="1035" y="178" class="wire-tag" fill="#dc2626">+12V → VM (Pin 16)</text>
+
+  <!-- 8. PSU -V -> Driver Pin 15 GND Motor & Cap (-) -->
+  <path d="M 1110 243 L 960 243" class="wire-black"/>
+  <circle cx="1027" cy="243" r="4" fill="#0f172a"/>
+  <line x1="1027" y1="243" x2="1027" y2="256" stroke="#0f172a" stroke-width="2.5"/>
+  <text x="1035" y="270" class="wire-tag" fill="#0f172a">PSU -V → GND (Pin 15)</text>
+
+  <!-- 9. Motor Coils -->
+  <path d="M 960 288 C 1030 288, 1060 415, 1110 415" class="wire-coil-b"/>
+  <path d="M 960 333 C 1020 333, 1060 445, 1110 445" class="wire-coil-b"/>
+  <text x="980" y="360" class="wire-tag" fill="#0284c7">Coil B (2A / 2B)</text>
+
+  <path d="M 960 378 C 1020 378, 1060 495, 1110 495" class="wire-coil-a"/>
+  <path d="M 960 423 C 1030 423, 1060 525, 1110 525" class="wire-coil-a"/>
+  <text x="980" y="440" class="wire-tag" fill="#ea580c">Coil A (1A / 1B)</text>
+
+  <!-- ==================== 5. EXPLANATORY NOTES ==================== -->
+  <!-- Note 1: Pinout Correction Summary -->
+  <rect x="50" y="655" width="410" height="270" class="box-alert"/>
+  <text x="70" y="685" class="note-title">⚠️ TMC2209 Pinout Correction Notice</text>
+  <text x="70" y="710" class="desc-text" font-weight="700">Standard StepStick DIP-16 Layout:</text>
+  <text x="70" y="732" class="note-body">• <tspan font-weight="700">Left Header (Pins 1–8):</tspan> Control &amp; Config only (EN, MS1, MS2, UART, CLK, NC, STEP, DIR).</text>
+  <text x="70" y="752" class="note-body">• <tspan font-weight="700">Right Header (Pins 9–16):</tspan> Power &amp; Motor outputs (GND, VIO, 1B, 1A, 2A, 2B, GND, VM).</text>
+  <text x="70" y="772" class="note-body">• <tspan font-weight="700" fill="#b91c1c">VIO (Logic 3.3V) &amp; Logic GND</tspan> are at <tspan font-weight="700">Pins 10 &amp; 9 on the RIGHT header</tspan> — NOT on the left header!</text>
+  <text x="70" y="792" class="note-body">• Wiring 3.3V/GND to the left header connects into EN/DIR/STEP and leaves VIO unpowered.</text>
+  <text x="70" y="816" class="desc-text" font-weight="700">180° Inverted Silk Orientation:</text>
+  <text x="70" y="836" class="note-body">• If holding module with trimmer RP1 at bottom (Makerbase silk view):</text>
+  <text x="70" y="854" class="note-body">  DIR is top-left, EN is bottom-left; GND/VIO are top-right, VM is bottom-right.</text>
+  <text x="70" y="874" class="note-body">  (Identical DIP-16 pinout rotated 180°).</text>
+
+  <!-- Note 2: Safety & Hardware Setup -->
+  <rect x="480" y="655" width="425" height="270" class="box-note"/>
+  <text x="500" y="685" class="note-title" fill="#0f172a">⚡ Safety &amp; Hardware Guidelines</text>
+  <text x="500" y="710" class="note-body">1. <tspan font-weight="700">Electrolytic Capacitor:</tspan> Connect ≥100 µF (100–470 µF) directly across VM</text>
+  <text x="500" y="728" class="note-body">   and motor GND close to the driver module to suppress LC turn-on spikes.</text>
+  <text x="500" y="752" class="note-body">2. <tspan font-weight="700">Common Ground:</tspan> ESP32 GND and motor supply (-V) MUST share a common</text>
+  <text x="500" y="770" class="note-body">   ground reference. Do NOT power motor coils from ESP32 pins.</text>
+  <text x="500" y="794" class="note-body">3. <tspan font-weight="700">Never Disconnect Motor while Powered:</tspan> Unplugging motor while VM</text>
+  <text x="500" y="812" class="note-body">   has power produces destructive back-EMF spikes that blow driver FETs.</text>
+  <text x="500" y="836" class="note-body">4. <tspan font-weight="700">Set Current Limit (VREF):</tspan> Measure voltage between VREF test pad and GND</text>
+  <text x="500" y="854" class="note-body">   with a multimeter; adjust trimmer pot before running motor under load.</text>
+  <text x="500" y="872" class="note-body">   Formula: <tspan font-family="monospace">I_rms ≈ VREF / 1.414</tspan> (with Rsense = 0.11 Ω).</text>
+
+  <!-- Note 3: Firmware & Microstepping -->
+  <rect x="925" y="655" width="425" height="270" class="box-note"/>
+  <text x="945" y="685" class="note-title" fill="#0f172a">🔧 Microstepping &amp; Sketch Settings</text>
+  <text x="945" y="710" class="note-body">• <tspan font-weight="700">Standalone Microstepping Mode:</tspan></text>
+  <text x="945" y="730" class="note-body">   MS1 = HIGH (3.3V), MS2 = HIGH (3.3V) → <tspan font-weight="700">16 Microsteps</tspan> (interpolated to 256)</text>
+  <text x="945" y="750" class="note-body">   Matches Arduino sketch constant <tspan font-family="monospace">MICROSTEPS = 16</tspan>.</text>
+  <text x="945" y="776" class="note-body">• <tspan font-weight="700">ESP32 GPIO Pin Assignments:</tspan></text>
+  <text x="945" y="796" class="note-body">   <tspan font-weight="700">GPIO 25</tspan> → Driver Pin 1 (<tspan font-weight="700">EN</tspan>, active LOW: LOW=Enabled, HIGH=Disabled)</text>
+  <text x="945" y="816" class="note-body">   <tspan font-weight="700">GPIO 26</tspan> → Driver Pin 8 (<tspan font-weight="700">DIR</tspan>)</text>
+  <text x="945" y="836" class="note-body">   <tspan font-weight="700">GPIO 27</tspan> → Driver Pin 7 (<tspan font-weight="700">STEP</tspan>)</text>
+  <text x="945" y="862" class="note-body">• <tspan font-weight="700">Steps per full rotation:</tspan></text>
+  <text x="945" y="880" class="note-body">   200 full steps/rev × 16 microsteps = <tspan font-weight="700">3,200 steps/rev</tspan>.</text>
 </svg>

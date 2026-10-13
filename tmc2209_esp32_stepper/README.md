@@ -1,4 +1,4 @@
-﻿# ESP32 + MKS TMC2209 V2.0 one-motor slow swing
+# ESP32 + MKS TMC2209 V2.0 one-motor slow swing
 
 This sketch moves one 4-wire stepper motor 20 degrees forward in 5 seconds, then 20 degrees back in 5 seconds, repeatedly.
 
@@ -9,19 +9,22 @@ This sketch moves one 4-wire stepper motor 20 degrees forward in 5 seconds, then
 
 ## Wiring summary
 
-| ESP32 / supply | MKS TMC2209 pin |
-|---|---|
-| ESP32 3V3 | VIO |
-| ESP32 GND | GND logic |
-| GPIO25 | EN |
-| GPIO26 | DIR |
-| GPIO27 | STEP |
-| 12 V or 24 V supply + | VM |
-| supply - | GND motor |
-| Stepper coil pair A | M1A / M1B |
-| Stepper coil pair B | M2A / M2B |
+| ESP32 / Power Supply | MKS TMC2209 Pin | Header Location | Notes |
+|---|---|---|---|
+| **ESP32 3V3** | **Pin 10 (VIO / VDD)** | Right Header | 3.3 V logic supply (NOT on left header!) |
+| **ESP32 GND** | **Pin 9 (GND Logic)** | Right Header | Common logic ground |
+| **GPIO25** | **Pin 1 (EN)** | Left Header | Active LOW enable |
+| **GPIO26** | **Pin 8 (DIR)** | Left Header | Direction signal |
+| **GPIO27** | **Pin 7 (STEP)** | Left Header | Step pulse signal |
+| **12 V / 24 V Supply (+)** | **Pin 16 (VM)** | Right Header | Motor power (add ≥100 µF cap to GND) |
+| **Supply (-)** | **Pin 15 (GND Motor)** | Right Header | Motor power ground |
+| **Stepper Coil Pair A** | **Pins 12 & 11 (1A / 1B)** | Right Header | Coil A |
+| **Stepper Coil Pair B** | **Pins 13 & 14 (2A / 2B)** | Right Header | Coil B |
 
-Also connect ESP32 GND and motor-supply negative together. Do **not** power the motor from the ESP32.
+> **Important Pinout Note:**
+> On standard StepStick modules (including MKS TMC2209 V2.0), the **left header (Pins 1–8)** is strictly control/config signals (`EN`, `MS1`, `MS2`, `UART`, `CLK`, `NC`, `STEP`, `DIR`). The **right header (Pins 9–16)** carries all power and motor outputs (`GND`, `VIO`, `1B`, `1A`, `2A`, `2B`, `GND`, `VM`).
+>
+> Common ground between ESP32 GND and motor supply (-) is required. Do **not** power the motor from the ESP32.
 
 ## Microsteps
 
